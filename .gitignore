@@ -1,0 +1,10 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Test data
+test_data/
+
+install_dependencies.py
+
+.vscode/
