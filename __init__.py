@@ -126,7 +126,7 @@ def register():
     
 
 def unregister():
-
+    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval
     bpy.utils.unregister_class(U2NET_PT_BackgroundRemovalPanel)
     bpy.utils.unregister_class(U2NET_OT_RunBackgroundRemoval)
     del bpy.types.Scene.u2net_image
