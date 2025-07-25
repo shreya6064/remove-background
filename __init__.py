@@ -95,7 +95,7 @@ if addon_dir not in sys.path:
 
 
 
-from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval
+
 
 def attempt_imports_temp():
 
@@ -117,6 +117,7 @@ def attempt_imports_temp():
 # --- Registration ---
 def register():
     install_dependencies()
+    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval
     #attempt_imports_temp()
     
     bpy.utils.register_class(U2NET_PT_BackgroundRemovalPanel)
