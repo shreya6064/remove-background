@@ -12,7 +12,7 @@ import bpy
 import subprocess
 import ctypes
 import getpass
-
+import urllib.request
 
 
 python_bin = sys.executable
@@ -53,9 +53,30 @@ def fix_permissions_windows(path):
 
 
 
+def download_model_if_needed(dest_path):
+    if os.path.exists(dest_path):
+        print("✅ Model already exists")
+        return
+
+    #link
+    url = "https://github.com/shreya6064/remove-background/releases/download/model/u2net.pth"
+    print(f"⬇️ Downloading model from: {url}")
+    try:
+        urllib.request.urlretrieve(url, dest_path)
+        print("✅ Model downloaded")
+    except Exception as e:
+        print(f"❌ Failed to download model: {e}")
+
+
+
 
 # Install packages
 def install_dependencies():
+    model_path = os.path.join(addon_dir, "saved_models", "u2net", "u2net.pth")
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+    download_model_if_needed(model_path)
+
+    
     if os.path.exists(target_dir) and os.listdir(target_dir):
         print("Modules already installed")
         return
@@ -73,6 +94,8 @@ def install_dependencies():
         ])
     print("✅ All packages installed.")
     fix_permissions_windows(target_dir)
+
+    
 
 
 
