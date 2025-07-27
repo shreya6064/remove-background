@@ -24,5 +24,10 @@ Result after removing background and overlaying:
 
 - Download or clone the repository and install via Edit -> Preferences -> Addons -> Install from disk.
 - You *must* run Blender as administrator for this to work because this addon requires additional modules (torch, torchvision, PIL, openCV) and these will take a few minutes to download. (Open up the system console to view progress.)
-- The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install. 
+- The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install.
+
+  ## Credits
+  - Original U²-Net Paper: https://github.com/xuebinqin/U-2-Net/tree/master
+  - Usage of model inspired by: https://github.com/Nkap23/u2net_bgremove_code/tree/main
+  - Woman in a red dress image by <a href="https://pixabay.com/users/surprising_media-11873433/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Mircea Iancu</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Pixabay</a>
 
