@@ -1,7 +1,13 @@
 # remove-background
 A Blender addon that uses a U²-Net to automatically remove backgrounds of images and generate alpha masks. It also allows you to automatically color grade the subject image based on the background. 
 
-## Demonstration:
+## Demo Video:
+
+
+https://github.com/user-attachments/assets/1e50b468-a6d8-40fa-9aa2-ea1894990b04
+
+
+## Result Images:
 Initial images (waterfall):
 <img width="1920" height="791" alt="initial_images" src="https://github.com/user-attachments/assets/fea277c5-27ef-4d3c-a800-ac2abf2b426b" />
 
