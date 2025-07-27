@@ -26,7 +26,9 @@ requirements = [
     "torch==2.7.1",
     "torchvision==0.22.1",
     "pillow==11.2.1",
-    "scikit-image==0.25.2"
+    "scikit-image==0.25.2",
+    "opencv-python==4.9.0.80"
+
 ]
 
 
@@ -140,16 +142,39 @@ def attempt_imports_temp():
 # --- Registration ---
 def register():
     install_dependencies()
-    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval
+    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval, U2NET_PT_ShaderEditorPanel, U2NET_OT_ColorTransfer  
     #attempt_imports_temp()
     
     bpy.utils.register_class(U2NET_PT_BackgroundRemovalPanel)
     bpy.utils.register_class(U2NET_OT_RunBackgroundRemoval)
+    bpy.utils.register_class(U2NET_OT_ColorTransfer)
+    
+
+
     bpy.types.Scene.u2net_image = bpy.props.PointerProperty(type=bpy.types.Image)
+
+    bpy.utils.register_class(U2NET_PT_ShaderEditorPanel)
+
+    bpy.types.Scene.u2net_transfer_from = bpy.props.PointerProperty(
+    name="Transfer From",
+    type=bpy.types.Image,
+    description="Image to transfer color from"
+)
+
+
     
 
 def unregister():
-    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval
+    from .main import U2NET_PT_BackgroundRemovalPanel, U2NET_OT_RunBackgroundRemoval, U2NET_PT_ShaderEditorPanel, U2NET_OT_ColorTransfer  
+
     bpy.utils.unregister_class(U2NET_PT_BackgroundRemovalPanel)
     bpy.utils.unregister_class(U2NET_OT_RunBackgroundRemoval)
+    bpy.utils.unregister_class(U2NET_PT_ShaderEditorPanel)
+
+    bpy.utils.unregister_class(U2NET_OT_ColorTransfer)
+
     del bpy.types.Scene.u2net_image
+
+    del bpy.types.Scene.u2net_transfer_from
+
+    

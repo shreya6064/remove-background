@@ -10,3 +10,4 @@ test_data/
 .vscode/
 
 modules/
+saved_models/

@@ -13,7 +13,7 @@ import tempfile
 
 from .model import U2NET
 from .data_loader import RescaleT, ToTensorLab, SalObjDataset
-
+from .colour_transfer import apply_color_transfer
 
 
 def normPRED(d):
@@ -193,6 +193,89 @@ class U2NET_OT_RunBackgroundRemoval(bpy.types.Operator):
 
 
 
+class U2NET_OT_ColorTransfer(bpy.types.Operator):
+    """Apply Color Transfer to Active Image Texture"""
+    bl_idname = "u2net.color_transfer"
+    bl_label = "Colour Transfer"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        #from .color_transfer import apply_color_transfer  # 📦 Your new file
+
+        node = bpy.context.active_node
+        source_image = context.scene.u2net_transfer_from
+
+        if not node or node.type != 'TEX_IMAGE':
+            self.report({'ERROR'}, "No image texture node selected.")
+            return {'CANCELLED'}
+        if not source_image:
+            self.report({'ERROR'}, "No transfer-from image selected.")
+            return {'CANCELLED'}
+
+        target_image = node.image
+        if not target_image:
+            self.report({'ERROR'}, "Target image texture node has no image.")
+            return {'CANCELLED'}
+
+        # Save both images to temp
+        temp_dir = tempfile.gettempdir()
+        target_path = os.path.join(temp_dir, "_target_image.png")
+        source_path = os.path.join(temp_dir, "_source_image.png")
+        output_path = os.path.join(temp_dir, f"{target_image.name}_recolor.png")
+
+        target_image.save_render(target_path)
+        source_image.save_render(source_path)
+
+        # Run color transfer
+        apply_color_transfer(source_path, target_path, output_path)
+
+        # Load result
+        result_img = bpy.data.images.load(output_path)
+        result_img.name = f"{target_image.name}_recolor"
+
+
+
+        # Add recolored image node
+        node_tree = node.id_data
+        new_node = node_tree.nodes.new(type='ShaderNodeTexImage')
+        new_node.image = result_img
+        new_node.location.x = node.location.x
+        new_node.location.y = node.location.y + 300
+
+        # Add Mix node
+        mix_node = node_tree.nodes.new(type='ShaderNodeMix')
+        mix_node.data_type = 'RGBA'
+        mix_node.blend_type = 'MIX'
+        mix_node.location.x = node.location.x + 300
+        mix_node.location.y = node.location.y + 100
+        mix_node.inputs[0].default_value = 1.0
+
+        
+        """
+        # Connect mix output to whatever the original was connected to
+        for link in node.outputs['Color'].links:
+            node_tree.links.new(mix_node.outputs[0], link.to_socket)
+            #node_tree.links.remove(link)
+
+        """
+               
+        original_links = list(node.outputs['Color'].links)
+        #print(original_links)
+        for link in original_links:
+            print(link.to_socket)
+            print(link.from_socket)
+            target_socket = link.to_socket
+            node_tree.links.remove(link)
+            node_tree.links.new(mix_node.outputs[2], target_socket)
+
+
+
+        # Connect original image to input 1, recolored to input 2
+        node_tree.links.new(node.outputs['Color'], mix_node.inputs[6])  # Input 1
+        node_tree.links.new(new_node.outputs['Color'], mix_node.inputs[7])  # Input 2
+
+        self.report({'INFO'}, f"Color transfer done: {result_img.name}")
+        return {'FINISHED'}
 
 
 
@@ -218,3 +301,22 @@ class U2NET_PT_BackgroundRemovalPanel(bpy.types.Panel):
 
 
 
+class U2NET_PT_ShaderEditorPanel(bpy.types.Panel):
+    """Panel for U2Net Background Removal in the Shader Editor"""
+    bl_label = "Remove Background"
+    bl_idname = "U2NET_PT_shader_editor_panel"
+    bl_space_type = 'NODE_EDITOR'
+    bl_region_type = 'UI'
+    bl_category = "Tool"
+
+    @classmethod
+    def poll(cls, context):
+        return context.space_data.tree_type == 'ShaderNodeTree'
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("u2net.run_removal", icon='IMAGE_ZDEPTH')
+        layout.separator()
+        layout.label(text="Colour Transfer:")
+        layout.prop(context.scene, "u2net_transfer_from", text="Transfer From")
+        layout.operator("u2net.color_transfer", icon='COLOR')
