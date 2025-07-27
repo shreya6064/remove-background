@@ -16,7 +16,7 @@ Result after removing background and overlaying:
 
 ## Installation Guide:
 
-Download or clone the repository and install via Edit -> Preferences -> Addons -> Install from disk.
-You *must* run Blender as administrator for this to work because this addon requires additional modules (torch, torchvision, PIL, openCV) and these will take a few minutes to download. (Open up the system console to view progress.)
-The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install. 
+- Download or clone the repository and install via Edit -> Preferences -> Addons -> Install from disk.
+- You *must* run Blender as administrator for this to work because this addon requires additional modules (torch, torchvision, PIL, openCV) and these will take a few minutes to download. (Open up the system console to view progress.)
+- The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install. 
 
