@@ -30,4 +30,6 @@ Result after removing background and overlaying:
   - Original U²-Net Paper: https://github.com/xuebinqin/U-2-Net/tree/master
   - Usage of model inspired by: https://github.com/Nkap23/u2net_bgremove_code/tree/main
   - Woman in a red dress image by <a href="https://pixabay.com/users/surprising_media-11873433/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Mircea Iancu</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Pixabay</a>
+  - Waterfall image by <a href="https://pixabay.com/users/renegossner-10236719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6473754">Rene Gossner</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6473754">Pixabay</a>
+  - Road image by <a href="https://pixabay.com/users/ryanmcguire-123690/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=238458">Ryan McGuire</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=238458">Pixabay</a>
 
