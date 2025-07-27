@@ -29,7 +29,7 @@ Result after removing background and overlaying:
 - The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install.
 
   ## Credits
-  - Qin, X., Zhang, Z., Huang, C., Dehghan, M., Zaiane, O., & Jagersand, M. (2020).  
+  - Original U²-Net Paper: Qin, X., Zhang, Z., Huang, C., Dehghan, M., Zaiane, O., & Jagersand, M. (2020).  
 *U²-Net: Going deeper with nested U-structure for salient object detection.*  
 Pattern Recognition, 106, 107404.  
 [https://doi.org/10.1016/j.patcog.2020.107404](https://doi.org/10.1016/j.patcog.2020.107404)  
