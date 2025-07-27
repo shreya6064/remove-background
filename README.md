@@ -29,7 +29,11 @@ Result after removing background and overlaying:
 - The addon also sets permissions of the newly created 'modules' folder so you can use them with regular, non-admin Blender every time after the initial install.
 
   ## Credits
-  - Original U²-Net Paper: https://github.com/xuebinqin/U-2-Net/tree/master
+  - Qin, X., Zhang, Z., Huang, C., Dehghan, M., Zaiane, O., & Jagersand, M. (2020).  
+*U²-Net: Going deeper with nested U-structure for salient object detection.*  
+Pattern Recognition, 106, 107404.  
+[https://doi.org/10.1016/j.patcog.2020.107404](https://doi.org/10.1016/j.patcog.2020.107404)  
+[GitHub Repo](https://github.com/xuebinqin/U-2-Net)
   - Usage of model inspired by: https://github.com/Nkap23/u2net_bgremove_code/tree/main
   - Reinhard color transfer algorithm by <a href="https://www.researchgate.net/publication/220518215_Color_Transfer_between_Images"> Reinhard, Erik & Ashikhmin, Michael & Gooch, Bruce & Shirley, Peter. (2001). Color Transfer between Images. IEEE Computer Graphics and Applications. 21. 34-41. 10.1109/38.946629.</a>
   - Woman in a red dress image by <a href="https://pixabay.com/users/surprising_media-11873433/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Mircea Iancu</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=6576618">Pixabay</a>
