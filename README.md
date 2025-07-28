@@ -8,6 +8,7 @@ A Blender addon that uses a U²-Net to automatically remove backgrounds of image
 
 https://github.com/user-attachments/assets/1e50b468-a6d8-40fa-9aa2-ea1894990b04
 
+I set up Blender for 2D editing using my addon <a href="https://github.com/shreya6064/b42d/tree/main">B42D</a>. In a nutshell, it makes the camera orthographic, the color transform standard, and aligns the camera to a selected mesh plane with an image texture while also changing the render resolution to match that image. 
 
 ## Result Images:
 Initial images (waterfall):
