@@ -2,8 +2,9 @@
 <img width="640" height="427" alt="final" src="https://github.com/user-attachments/assets/2e8339c7-8cd4-4369-8fb1-ae5d03cfd2b0" />
 
 A Blender addon that uses a U²-Net to automatically remove backgrounds of images and generate alpha masks. It also allows you to automatically color grade the subject image based on the background. 
-<img width="1906" height="863" alt="before_reddit" src="https://github.com/user-attachments/assets/eab970f4-81a1-478a-8ffb-8ef8c8225ea1" />
-<img width="1903" height="877" alt="after_reddit" src="https://github.com/user-attachments/assets/044e89e3-699c-4ee5-a16d-499fde810866" />
+
+<img width="653" height="431" alt="before_reddit" src="https://github.com/user-attachments/assets/eab970f4-81a1-478a-8ffb-8ef8c8225ea1" />
+<img width="653" height="438" alt="after_reddit" src="https://github.com/user-attachments/assets/044e89e3-699c-4ee5-a16d-499fde810866" />
 
 
 ## Demo Video:
